@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setFilteredContacts } from "../../redux/filtersSlice";
 import { filteredContacts } from "../../redux/filtersSlice";
+import css from "./SearchBox.module.css";
 
 export default function SearchBox() {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ export default function SearchBox() {
   const handleFilterChange = (e) =>
     dispatch(setFilteredContacts(e.target.value));
   return (
-    <div>
+    <div className={css.wrap}>
       <p>Find contact by name</p>
       <input type="text" value={filter} onChange={handleFilterChange} />
     </div>
