@@ -12,7 +12,7 @@ export default function ContactList() {
     return contact.name.toLowerCase().includes(filterValue.toLowerCase());
   });
   return (
-    <ul>
+    <ul className={css.list}>
       {visibleNumbers.length > 0
         ? visibleNumbers.map((contact) => {
             return (
