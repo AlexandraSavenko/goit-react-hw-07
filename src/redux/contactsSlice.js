@@ -1,57 +1,66 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts } from "./contactsOps";
+import { addContact, deleteContact } from "./contactsOps";
+
 export const selectContacts = (state) => state.contacts.items;
 export const slice = createSlice({
   name: "contacts",
   initialState: {
     items: [],
     isLoading: false,
-    error: null,
+    error: false,
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, (state) => {
         state.isLoading = true;
+        state.error = false;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(fetchContacts.rejected, (state, action) => {
+      .addCase(fetchContacts.rejected, (state) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = true;
+      })
+      .addCase(addContact.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(addContact.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+      })
+      .addCase(deleteContact.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
+        );
+        state.isLoading = false;
+      })
+      .addCase(deleteContact.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
       });
   },
-  reducers: {
-    // fetchingInProgress: (state) => {
-    //   state.isLoading = true;
-    // },
-    // fetchingSuccess: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    //   state.items = action.payload;
-    // },
-    // fetchingError: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-    addContact: (state, action) => {
-      state.items.push(action.payload);
-    },
-    deleteContact: (state, action) => {
-      state.items = state.items.filter(
-        (contact) => contact.id !== action.payload
-      );
-    },
-  },
+  // reducers: {
+  //   addContact: (state, action) => {
+  //     state.items.push(action.payload);
+  //   },
+  //   deleteContact: (state, action) => {
+  //     state.items = state.items.filter(
+  //       (contact) => contact.id !== action.payload
+  //     );
+  //   },
+  // },
 });
 
-export const {
-  fetchingInProgress,
-  fetchingSuccess,
-  fetchingError,
-  addContact,
-  deleteContact,
-} = slice.actions;
+// export const { deleteContact } = slice.actions;
 export default slice.reducer;

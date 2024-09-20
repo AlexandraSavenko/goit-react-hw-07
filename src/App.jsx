@@ -8,6 +8,8 @@ import { selectContacts } from "./redux/contactsSlice";
 import { useEffect } from "react";
 
 function App() {
+  const loading = useSelector((state) => state.contacts.isLoading);
+  const error = useSelector((state) => state.contacts.error);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchContacts());
@@ -17,7 +19,10 @@ function App() {
     <div>
       <h1>Phonebook</h1>
       <ContactForm />
+
       <SearchBox />
+      {loading && <p>Loading</p>}
+      {error && <p>Sorry, something went wrong</p>}
       <ContactList />
     </div>
   );

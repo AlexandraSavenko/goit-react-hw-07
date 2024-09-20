@@ -1,10 +1,10 @@
 import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
+// import { nanoid } from "@reduxjs/toolkit";
 const UserScheme = Yup.object().shape({
   name: Yup.string()
     .min(3, "Too short! Not less than 3 symbols.")
@@ -20,7 +20,7 @@ export default function ContactForm() {
   const id = useId();
   const dispatch = useDispatch();
   const handleAddContact = (contactInfo) => {
-    dispatch(addContact({ id: nanoid(), ...contactInfo }));
+    dispatch(addContact({ ...contactInfo }));
   };
   return (
     <Formik
