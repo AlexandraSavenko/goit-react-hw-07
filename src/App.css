@@ -5,3 +5,9 @@
 ul {
   list-style: none;
 }
+.container {
+  background-color: hsla(0, 0%, 0%, 0.575);
+}
+.mainTitle {
+  text-align: center;
+}

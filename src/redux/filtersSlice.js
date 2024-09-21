@@ -9,10 +9,6 @@ const slice = createSlice({
   reducers: {
     setFilteredContacts(state, action) {
       state.name = action.payload;
-      // return {
-      //   ...state,
-      //   filter: action.payload,
-      // };
     },
   },
 });

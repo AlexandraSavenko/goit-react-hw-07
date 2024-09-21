@@ -16,8 +16,8 @@ function App() {
   }, [dispatch]);
   // const { fetchTasks } = useSelector(selectContacts);
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <div className="container">
+      <h1 className="mainTitle">Phonebook</h1>
       <ContactForm />
 
       <SearchBox />

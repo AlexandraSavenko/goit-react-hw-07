@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 80%;
-  background-color: hsla(0, 0%, 0%, 0.575);
 }
 .item {
   width: calc((100% - 2 * 8px) / 3);
