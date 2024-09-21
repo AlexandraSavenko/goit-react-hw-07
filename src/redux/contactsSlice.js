@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts } from "./contactsOps";
 import { addContact, deleteContact } from "./contactsOps";
 
-export const selectContacts = (state) => state.contacts.items;
+// export const selectContacts = (state) => state.contacts.items;
 export const slice = createSlice({
   name: "contacts",
   initialState: {

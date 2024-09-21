@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-export const filteredContacts = (state) => state.filters.name;
+// export const filteredContacts = (state) => state.filters.name;
 
 const slice = createSlice({
   name: "filters",
