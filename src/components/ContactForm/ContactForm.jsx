@@ -32,11 +32,25 @@ export default function ContactForm() {
       }}
     >
       <Form className={css.form}>
-        <label htmlFor={`${id}-name`}>Name</label>
-        <Field type="text" id={`${id}-name`} name="name" />
+        <label className={css.text} htmlFor={`${id}-name`}>
+          Name
+        </label>
+        <Field
+          className={`${css.input} ${css.text}`}
+          type="text"
+          id={`${id}-name`}
+          name="name"
+        />
         <ErrorMessage name="name" component="span" className={css.errText} />
-        <label htmlFor={`${id}-number`}>Number</label>
-        <Field type="text" id={`${id}-number`} name="number" />
+        <label className={css.text} htmlFor={`${id}-number`}>
+          Number
+        </label>
+        <Field
+          className={`${css.input} ${css.text}`}
+          type="text"
+          id={`${id}-number`}
+          name="number"
+        />
         <ErrorMessage name="number" component="span" className={css.errText} />
         <button className={css.button} type="submit">
           Add contact

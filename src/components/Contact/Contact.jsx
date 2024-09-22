@@ -16,11 +16,11 @@ export default function Contact({ contacts: { id, name, number } }) {
       <div>
         <div className={css.textPlusIcon}>
           <IoMdPerson />
-          <p>{name}</p>
+          <p className={css.text}>{name}</p>
         </div>
         <div className={css.textPlusIcon}>
           <FaPhoneAlt className={css.noMargin} />
-          <p className={css.noMargin}>{number}</p>
+          <p className={`${css.noMargin} ${css.text}`}>{number}</p>
         </div>
       </div>
 

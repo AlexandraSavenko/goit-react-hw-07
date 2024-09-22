@@ -6,8 +6,15 @@ ul {
   list-style: none;
 }
 .container {
+  width: 100%;
+  max-width: 1200px;
   background-color: hsla(0, 0%, 0%, 0.575);
 }
 .mainTitle {
   text-align: center;
+}
+@media screen and (min-width: 360px) {
+  .container {
+    padding: 20px;
+  }
 }

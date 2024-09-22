@@ -11,9 +11,9 @@ export default function SearchBox() {
     dispatch(setFilteredContacts(e.target.value));
   return (
     <div className={css.wrap}>
-      <p>Find contact by name</p>
+      <p className={css.text}>Find contact by name</p>
       <input
-        className={css.input}
+        className={`${css.input} ${css.text}`}
         type="text"
         value={filter}
         onChange={handleFilterChange}
