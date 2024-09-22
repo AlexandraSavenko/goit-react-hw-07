@@ -6,7 +6,7 @@ ul {
   list-style: none;
 }
 .container {
-  width: 100%;
+  width: fit-content;
   max-width: 1200px;
   background-color: hsla(0, 0%, 0%, 0.575);
 }
