@@ -4,17 +4,16 @@ import * as Yup from "yup";
 import { addContact } from "../../redux/contactsOps";
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-// import { nanoid } from "@reduxjs/toolkit";
 const UserScheme = Yup.object().shape({
   name: Yup.string()
     .min(3, "Too short! Not less than 3 symbols.")
     .max(50, "Too many! No more than 50 symbols.")
-    .required("This field is required!"),
+    .required("You have to write a name!"),
   number: Yup.string()
     .matches(/^\d+$/, "Must be a valid number.")
     .min(3, "Too short! Not less than 3 symbols.")
     .max(50, "Too many! No more than 50 symbols.")
-    .required(),
+    .required("The phone number should be here!"),
 });
 export default function ContactForm() {
   const id = useId();
@@ -26,6 +25,7 @@ export default function ContactForm() {
     <Formik
       initialValues={{ name: "", number: "" }}
       validationSchema={UserScheme}
+      validateOnChange={false}
       onSubmit={(values, actions) => {
         handleAddContact(values);
         actions.resetForm();
@@ -38,7 +38,9 @@ export default function ContactForm() {
         <label htmlFor={`${id}-number`}>Number</label>
         <Field type="text" id={`${id}-number`} name="number" />
         <ErrorMessage name="number" component="span" className={css.errText} />
-        <button type="submit">Add contact</button>
+        <button className={css.button} type="submit">
+          Add contact
+        </button>
       </Form>
     </Formik>
   );

@@ -1,3 +1,9 @@
 .wrap {
   text-align: center;
+  padding: 10px;
+}
+.input {
+  padding: 4px;
+  padding-left: 8px;
+  margin-top: 10px;
 }
