@@ -6,6 +6,7 @@ import { fetchContacts } from "./redux/contactsOps";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useEffect } from "react";
+import Loader from "./components/Loader/Loader";
 
 function App() {
   const loading = useSelector((state) => state.contacts.isLoading);
@@ -16,14 +17,16 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="container">
-      <h1 className="mainTitle">Phonebook</h1>
-      <ContactForm />
+    <div>
+      <div className="container">
+        <h1 className="mainTitle">Phonebook</h1>
+        <ContactForm />
 
-      <SearchBox />
-      {loading && <p>Loading</p>}
-      {error && <p>Sorry, something went wrong</p>}
-      <ContactList />
+        <SearchBox />
+        {loading && <Loader />}
+        {error && <p>Sorry, something went wrong</p>}
+        <ContactList />
+      </div>
     </div>
   );
 }

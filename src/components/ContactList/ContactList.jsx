@@ -17,7 +17,9 @@ export default function ContactList() {
           );
         })
       ) : (
-        <p>Sorry, there are no contacts on your request</p>
+        <p className={css.message}>
+          Sorry, there are no contacts on your request
+        </p>
       )}
     </ul>
   );
